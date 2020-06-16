@@ -1,0 +1,21 @@
+<div style=" color: rgb(236, 211, 152);">
+  <div *ngIf="read && valide">
+    <span class="text-success"> Validée</span>
+
+  </div>
+  <div *ngIf="read && annule">
+    <span class="text-danger"> Annulée</span>
+
+  </div>
+  <div *ngIf="!read">
+
+
+    <button (click)="onValidCliecked($event)" class="btn btn-success" style="padding: 5px;">Valider</button>&nbsp;&nbsp;
+
+
+    <button (click)="onCancelClicked($event)" class="btn btn-danger" style="padding: 5px;">Annuler</button>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,177 @@
+<!-- DETAILS -->
+<section id="details">
+  <div class="">
+    <div class="col-md-4 list">
+      <a [routerLink]="['/accessoires']" class="btn btn-secondary btn-block">
+        <i class="fas fa-arrow-left"></i> Liste d'accessoires
+      </a>
+    </div>
+    <div class="row mt-3">
+      <div class="col-sm-11" style="margin: auto;">
+        <div class="card ">
+          <div class="card-header " style="text-align:center;">
+            <h4>Ajouter un accessoire</h4>
+          </div>
+          <div class="card-body">
+            <flash-messages></flash-messages>
+            <form #equipementForm="ngForm" (ngSubmit)="onAddSousEquipement(equipementForm)"
+              enctype="multipart/form-data">
+              <div class="row" style="text-align:center;">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nom">Nom <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" name="nom" [(ngModel)]="sous_equipement.nom" #nom="ngModel"
+                      [ngClass]="{
+                      'is-invalid': (nom.errors && nom.touched) || (errorNom && !valueNom  )
+                    }" required (keyup)='clickNom($event)' />
+                    <div class="invalid-feedback" [hidden]="!nom.errors?.required  && !errorNom">
+                      le champs nom est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="code">Code <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" name="code" [(ngModel)]="sous_equipement.code"
+                      #code="ngModel" [ngClass]="{
+                        'is-invalid': (code.errors && code.touched) || (errorCode && !valueCode  )
+                      }" required (keyup)='clickCode($event)' />
+                    <div class="invalid-feedback" [hidden]="!code.errors?.required && !errorCode">
+                      le champs code est obligatoire
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="text-align:center;">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="etat">Etat
+                      <span style="color: red;">*</span></label>
+                    <select name="etat" id="etat" class="form-control" (ngModelChange)="setEtat($event)" [ngModel]=""
+                      #etat="ngModel" [ngClass]="{
+                        'is-invalid': (etat.errors && etat.touched) || (errorEtat && !valueEtat  )
+                      }" required (click)='clickEtat($event)'>
+                      <option value="Bon etat">Bon etat</option>
+                      <option value="Mauvais etat">Mauvais etat</option>
+                      <option value="Défaillant">Défaillant</option>
+                      <option value="En panne">En panne</option>
+
+                    </select>
+                    <div class="invalid-feedback" [hidden]="!etat.errors?.required && !errorEtat">
+                      le champs etat est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Statut
+                      <span style="color: red;">*</span></label>
+                    <select name="status" id="status" class="form-control" (ngModelChange)="setStatut($event)"
+                      [ngModel]="" #status="ngModel" [ngClass]="{
+                        'is-invalid': (status.errors && status.touched) || (errorStatut && !valueStatut  )
+                      }" required (click)='clickStatut($event)'>
+                      <option value="Disponible">Disponible</option>
+                      <option value="Utilisation">En utilisation</option>
+                      <option value="Manquant"> Manquant</option>
+                      <option value="Stock">En stock</option>
+                      <option value="Etalonnage">En ettalonnage</option>
+
+                    </select>
+                    <div class="invalid-feedback" [hidden]="!status.errors?.required && !errorStatut">
+                      le champs statut est obligatoire
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" row" style="text-align:center;">
+
+                <div class="col-md-6">
+                  <div class="form-group" (click)='clickAppareil($event)'>
+                    <label>Appareil parrent
+                      <span style="color: red;">*</span></label><br />
+                    <select name="appareil" id="select" class="form-control" [ngModel]="" #appareil="ngModel" [ngClass]="{
+                        'is-invalid': (errorAppareil)
+                      }">
+                      <option *ngFor="let appareil of appareils" [ngValue]="appareil.id" class="option">
+                        {{ appareil.nom }} - {{appareil.code}}</option>
+                    </select>
+                    <div class="invalid-feedback" [hidden]="!errorAppareil">
+                      le champs appareil parrent est obligatoire
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <label for="appareil" class="">appareil :</label>
+                  <div (click)="setErrorAppareil()">
+
+
+                    <ng-select2 class="custom" name="appareil" [data]="appareils" [width]="550"
+                      [ngClass]="{'form-control': true,'border border-danger':errorAppareil }"
+                      (valueChanged)="setAppareil($event)">
+                    </ng-select2>
+                  </div>
+                  <small *ngIf="errorAppareil" style="color: red;">le champs appareil est obligatoire !</small>
+
+                </div> -->
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Reference </label>
+                    <input name="reference" style="text-align:center;" type="text" class="form-control"
+                      [(ngModel)]="sous_equipement.reference" #reference="ngModel" />
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row" style="text-align:center;">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="marque">Marque</label>
+                    <input type="text" class="form-control" name="marque" [(ngModel)]="sous_equipement.marque"
+                      #marque="ngModel" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+
+                  <div class="input-group mt-4">
+                    <label class="input-group-btn">
+                      <span class="btn btn-secondary">
+                        Images <input type="file" style="display: none;" multiple multiple="multiple"
+                          class="form-control-file" id="photo" #photo="" name="photo" (change)="selectphoto($event)">
+                      </span>
+                    </label>
+                    <input type="text" class="form-control" readonly [ngClass]="{
+                      'is-invalid':  (errorPhoto )
+                    }">
+                    <div class="invalid-feedback" [hidden]=" !errorPhoto">
+                      format de photo invalide !
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="row" style="display: center; align-items: center; justify-content: center;">
+
+
+              </div>
+              <div class="row mt-3" style="display: center; align-items: center; justify-content: center;">
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-block btn-success" style=" width: 400px; margin:auto"
+                    *ngIf="!adding">
+                    <i class="fas fa-plus"></i> ajouter
+                  </button>
+                  <button type="submit" class="btn btn-block"
+                    style="background-color: #a5d6a7; width: 300px; margin: auto;" *ngIf="adding">
+                    En cours d'ajout
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

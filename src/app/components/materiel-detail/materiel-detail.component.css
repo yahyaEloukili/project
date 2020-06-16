@@ -1,0 +1,35 @@
+.img {
+  float:  left;
+  width:  600px;
+  height: 500px;
+  background-size: cover;
+}
+@media (max-width:800px){
+  .list{
+
+    margin-left: 4.8% ;
+    width: 90.25%;
+
+  }
+
+  }
+
+  @media (min-width:800px){
+    .list{
+
+      margin-left:0;
+      width: 30.3%;
+
+    }
+
+    }
+
+  @media (max-width:800px){
+    .logout{
+
+   position: absolute;
+   right: 9%;
+    }
+
+    }
+

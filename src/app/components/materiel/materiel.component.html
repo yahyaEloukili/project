@@ -1,0 +1,78 @@
+<div class="">
+  <h2 style="text-align: center;" class="">Liste des materiels</h2>
+  <div class="row">
+
+
+    <div class="col-sm">
+      <div class="form-group">
+        <label>Filtrer par :
+          <span>*</span></label>
+
+        <select name="appareil" class="form-control" [ngModel]="" (ngModelChange)="setValue($event)" #appareil="ngModel"
+          style="width: 250px;">
+          <option value="tout" selected=true>tout</option>
+          <option value="statut">statut</option>
+          <option value="etat">etat</option>
+
+
+        </select>
+
+      </div>
+    </div>
+
+    <div *ngIf="value==='statut'" class="col-sm" style="margin-top: 25px;margin-right: 50%;">
+
+
+      <select name="statut" class="form-control" [ngModel]="" (ngModelChange)="setStatut($event)" #statut="ngModel">
+        <option value="Disponible">Disponible</option>
+        <option value="Utilisation">En utilisation</option>
+        <option value="Stock">En stock</option>
+        <option value="Etalonnage">En etalonnage</option>
+      </select>
+    </div>
+    <div *ngIf="value==='etat'" class="col-sm" style="margin-top: 25px;margin-right: 50%;">
+
+
+      <select name="etat" class="form-control" [ngModel]="" (ngModelChange)="setEtat($event)" #etat="ngModel">
+        <option value="Bon etat">Bon etat</option>
+        <option value="Mauvais etat">Mauvais etat</option>
+        <option value="Défaillant">Défaillant</option>
+        <option value="En panne">En panne</option>
+      </select>
+    </div>
+
+
+
+
+  </div>
+  <div class="mb-1">
+    <button (click)="downloadAsPDF()" class="btn btn-sm btn-success mt-2"
+      style="background-color: #163441;color: #fdb82f; border-color: #163441;">Pdf</button>&nbsp;&nbsp;
+    <button (click)="exportAsXLSX()" class="btn btn-sm btn-success mt-2"
+      style="background-color: #163441;color: #fdb82f; border-color: #163441;">Excel</button>&nbsp;&nbsp;
+    <button (click)="onBtnExport()" class="btn btn-sm btn-success mt-2"
+      style="background-color: #163441;color: #fdb82f; border-color: #163441;">Csv</button>
+    <div id="pdfTable" #pdfTable>
+    </div>
+  </div>
+  <ag-grid-angular style=" height: 80vh; " class="ag-theme-alpine" #agGrid [suppressHorizontalScroll]="false"
+    rowSelection="multiple" [columnDefs]="columnDefs" [pagination]="true" [animateRows]="true" [paginationPageSize]="30"
+    [frameworkComponents]="frameworkComponents" (gridReady)=(onGridReady($event)) [isRowSelectable]="false"
+    [suppressCellSelection]="false">
+
+
+  </ag-grid-angular>
+  <!-- style="display: center; align-items: center; justify-content: center;" -->
+  <div class="row" style="display: center; align-items: center; justify-content: center;">
+    <div class="col-md-4">
+
+      <button (click)='onDeleteClick($event)' class=" btn btn-block  btn-danger mt-3">Supprimer</button>
+
+    </div>
+    <div class="col-md-4">
+
+      <button (click)="onAddButtonClick()" class=" btn btn-block   btn-success mt-3">Ajouter</button>
+
+    </div>
+  </div>
+</div>

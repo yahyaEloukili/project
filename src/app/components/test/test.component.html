@@ -1,0 +1,42 @@
+<!-- <input type="text" [(ngModel)]="search" (keyup)="searchData($event)">
+<table class="table">
+  <thead>
+    <tr>
+      <td>Nom</td>
+      <td>Code</td>
+      <td>Etat</td>
+      <td>reference</td>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let appareil of appareils">
+      <td>{{appareil.nom}}</td>
+      <td>{{appareil.code}}</td>
+      <td>{{appareil.etat}}</td>
+      <td>{{appareil.reference}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<nav>
+  <ul class="pagination" [hidden]="hidden">
+    <li [class]="classPrevious"><a (click)="onClickPrevious()" class="page-link">previous</a></li>
+
+    <li class="page-item"><a
+        [ngStyle]="{'background-color': ((classStyle && 1 === currentPage) || firstTime) ? '#33b5e5' : ''}"
+        (click)="onClick(1)" class="page-link">1</a>
+    </li>
+    <li *ngFor="let i of array" class="page-item"><a
+        [ngStyle]="{'background-color': (classStyle && i === currentPage) ? '#33b5e5' : ''}" (click)="onClick(i)"
+        class="page-link">{{i}}</a>
+    </li>
+    <!-- <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item"><a class="page-link">3</a></li>
+    <li class="page-item"><a class="page-link">4</a></li> -->
+<!-- <li [class]="classNext"><a class="page-link" (click)="onClickNext()">next</a></li>
+  </ul>
+
+</nav> --> -->

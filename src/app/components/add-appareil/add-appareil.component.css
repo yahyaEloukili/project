@@ -1,0 +1,38 @@
+span{
+  font-weight: bold;
+  color: red;
+}
+.span{
+  font-weight: normal;
+  color: white;
+}
+
+input {
+  text-align: center;
+}
+
+select{
+  text-align-last: center;
+}
+option{
+  text-align: center;
+}
+.card-header{
+  text-align: center;
+}
+
+.row{
+  text-align: center;
+}
+.btn2{
+  background-color: red;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+span.select2-selection.select2-selection--single {
+  outline: none;
+}

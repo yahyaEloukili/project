@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-md-3">
+    <a [routerLink]="['/appareilDetail',id]" class="btn btn-secondary btn-block">
+      <i class="fas fa-arrow-left"></i> {{appareil[0]?.nom}}
+    </a>
+  </div>
+  <h2 style="text-align: center;" class="mb-4 mt-5" *ngIf="count!==0">Accessoires de l'appareil
+    {{appareil[0]?.nom}}-{{appareil[0]?.code}}</h2>
+  <h2 style="text-align: center;" class="mb-4 mt-5" *ngIf="count===0">Aucun accessoire</h2>
+
+  <flx-ui-datatable [headers]="['Nom', 'code','marque','Reference','etat','statut', 'Nombre']"
+    [dataKeys]="['nom','code','marque', 'reference','etat','statut', 'nombre']" dataSrcKey="data" [ngClass]="{}"
+    [searchBar]="{ width: '20%' }" searchPlaceholder="chercher un sous equipement" [limit]="5"
+    [enableDataExports]="true" [dataExportsConfig]="{ exportsTo: ['pdf', 'excel', 'word'] }" [actionButtons]="buttons"
+    spinnerSrc="https://gifimage.net/wp-content/uploads/2017/09/ajax-loader-gif.gif" [dataUrl]="url">
+  </flx-ui-datatable>
+
+</div>
+
+<footer id="main-footer" class=" bg-dark text-white mt-5 p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center">
+          Copyright &copy;
+          <span id="year"></span>
+          OCP MS
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

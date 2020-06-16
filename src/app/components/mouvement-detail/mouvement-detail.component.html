@@ -1,0 +1,147 @@
+<div class="">
+  <div class="col-md-3">
+
+    <a *ngIf="mouvements?.typeMouvement==='RECUPERATION'" [routerLink]="['/mouvements']"
+      class="btn btn-secondary btn-block mb-4">
+      <i class="fas fa-arrow-left"></i> Liste de recupérations
+    </a>
+    <a *ngIf="mouvements?.typeMouvement==='DEPOT'" [routerLink]="['/depots']" class="btn btn-secondary btn-block mb-4">
+      <i class="fas fa-arrow-left"></i> Liste de depots
+    </a>
+  </div>
+  <div class="card card-body" *ngIf="mouvements?.typeMouvement">
+    <div class="card-header" style="text-align: center;">
+      <strong>Details de {{mouvements?.typeMouvement}} </strong>
+    </div>
+
+    <div class="row mt-3 ">
+      <div class="col-sm-6">
+
+        <div *ngIf="mouvements?.imagesEtat[0] ">
+          <img *ngIf="mouvements?.imagesEtat[0] " [src]="src" class="mt-2" />
+        </div>
+        <div *ngIf="!mouvements?.imagesEtat[0]">
+          No photo
+        </div>
+      </div>
+      <div class="col-sm-6 mt-5">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Appareil: </strong><a *ngIf="mouvements?.appareil?.nom"
+              [routerLink]="['/appareilDetail',mouvements?.appareil?.id]"
+              target="_blank">{{mouvements?.appareil?.nom}}</a> {{mouvements?.appareil?.code}} </li>
+          <li class="list-group-item"><strong>Utilisateur: </strong><a *ngIf="mouvements?.user?.nom"
+              [routerLink]="['/users',mouvements?.user?.id]" target="_blank"> {{mouvements?.user?.nom}}</a></li>
+
+          <li class="list-group-item" *ngIf="mouvements?.Depot"><strong>{{mouvements?.Depot?.typeMouvement}}:
+            </strong><a *ngIf="mouvements?.Depot" [routerLink]="['/mouvementDetail/',mouvements?.Depot?.id]"
+              target="_blank">
+              {{mouvements?.Depot?.typeMouvement}}</a>
+          </li>
+
+          <li class="list-group-item"><strong>Date de mouvement: </strong>
+            {{mouvements?.createdAt |  date:'dd-MM-yyyy HH:mm:ss'}}</li>
+
+
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card card-body mt-3" [hidden]="hiddenAccessoires">
+    <div class="card-header">
+      <h3 style="text-align: center;">Accessoires signalés</h3>
+    </div>
+    <div class="row mt-3">
+
+      <table class="table table-bordered mt-3" *ngIf="mouvements?.sous_equipements?.length!==0">
+        <thead>
+          <th>Accessoires signalées</th>
+          <th>etat</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let accessoire of mouvements?.sous_equipements">
+            <td style="width: 500px;"><a *ngIf="accessoire.id" [routerLink]="['/accessoireDetail',accessoire.id]"
+                target="_blank">{{accessoire?.nom}}</a> -
+              {{accessoire?.code}}</td>
+            <td style="width: 100px;"><strong
+                [ngClass]="{'text-danger': accessoire?.SousEq_Mvmt?.status === 'manquante','text-warning': accessoire?.SousEq_Mvmt?.status === 'Defaillant' }">
+                {{accessoire.SousEq_Mvmt.status}}</strong>
+            </td>
+            <td style="width: 200px;">
+              <div
+                *ngIf="!accessoire?.SousEq_Mvmt.valide && !accessoire?.SousEq_Mvmt.annule && !valideAccessoire && !annuleAccessoire">
+                <button class="btn btn-sm btn-success"
+                  (click)="onValidateClicked(accessoire.id,accessoire?.SousEq_Mvmt?.status,accessoire?.SousEq_Mvmt?.mouvementId)">Valider</button>&nbsp;&nbsp;
+                <button (click)="onCancelClicked(accessoire.id,accessoire?.SousEq_Mvmt?.mouvementId)"
+                  class="btn btn-sm btn-danger">Annuler</button>
+              </div>
+              <div *ngIf="(accessoire?.SousEq_Mvmt.valide) ">
+                <span class="text-success">Validé</span>
+              </div>
+              <div *ngIf="( accessoire?.SousEq_Mvmt.annule ) ">
+                <span class="text-danger">Annulée</span>
+              </div>
+
+            </td>
+
+
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+    </div>
+  </div>
+  <div class="card card-body mt-3" [hidden]="hiddenMateriel">
+    <div class="card-header">
+      <h3 style="text-align: center;">Materiels </h3>
+    </div>
+    <table class="table table-bordered mt-3"
+      *ngIf="mouvements?.piece_rechanges && mouvements?.piece_rechanges?.length!==0">
+      <thead>
+        <th>Materiels signalées</th>
+        <th>etat</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let materiel of mouvements?.piece_rechanges">
+
+          <td style="width: 500px;"><a *ngIf="materiel.id" [routerLink]="['/materiel',materiel.id]"
+              target="_blank">{{materiel?.nom}}</a> - {{materiel?.code}}
+          </td>
+          <td style="width: 100px;"><strong
+              [ngClass]="{'text-danger': materiel?.PieceRechange_Mvmt?.status === 'manquante','text-warning': materiel?.PieceRechange_Mvmt?.status === 'Defaillant' }">
+              {{materiel.PieceRechange_Mvmt.status}}</strong>
+          </td>
+          <td style="width: 200px;">
+            <div>
+              <div
+                *ngIf="!materiel?.PieceRechange_Mvmt.valide && !materiel?.PieceRechange_Mvmt.annule && !valideMateriel && !annuleMateriel">
+                <button class="btn btn-sm btn-success"
+                  (click)="onValidateClicked2(materiel.id,materiel?.PieceRechange_Mvmt?.status,materiel?.PieceRechange_Mvmt?.mouvementId)">Valider</button>&nbsp;&nbsp;
+                <button (click)="onCancelClicked2(materiel.id,materiel?.PieceRechange_Mvmt.mouvementId)"
+                  class="btn btn-sm btn-danger">Annuler</button>
+              </div>
+              <div *ngIf="(materiel?.PieceRechange_Mvmt.valide) ">
+                <span class="text-success">Validé</span>
+              </div>
+              <div *ngIf="(materiel?.PieceRechange_Mvmt.annule ) ">
+                <span class="text-danger">Annulée</span>
+              </div>
+            </div>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+</div>

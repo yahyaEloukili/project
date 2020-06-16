@@ -1,0 +1,5 @@
+<div style="text-align: center;"
+  [ngStyle]="{'background-color': cellValue ==='Disponible' ? 'rgb(245, 201, 205)' : cellValue ==='Stock' ? 'rgb(236, 211, 152)' :  cellValue ==='Utilisation' ?  'rgb(195, 196, 228)': cellValue ==='Manquant' ?  'rgb(224, 117, 117)': 'rgb(145, 182, 214)'}">
+  <span>{{cellValue}}</span>
+
+</div>

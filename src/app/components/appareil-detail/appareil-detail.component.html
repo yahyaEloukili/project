@@ -1,0 +1,120 @@
+<div class="">
+  <div class="col-md-3 mb-3">
+    <a [routerLink]="['/appareils']" class="btn btn-secondary btn-block">
+      <i class="fas fa-arrow-left"></i> Liste d'appareils
+    </a>
+  </div>
+  <div class="card card-body">
+
+    <div class="card-header" style="text-align: center;">
+      <strong> Details d'appareils</strong>
+    </div>
+
+    <div class="row mt-5 ">
+      <div class="col-sm-6">
+        <div id="slider1" class="carousel slide mb-5 ml-5" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li class="active" data-target="#slider1" data-slide-to="0" [hidden]="hiddenImage"></li>
+            <li data-target="#slider1" data-slide-to="1" *ngIf="appareil[0]?.image[1] "></li>
+            <li data-target="#slider1" data-slide-to="2" *ngIf="appareil[0]?.image[2] "></li>
+            <li data-target="#slider1" data-slide-to="3" *ngIf="appareil[0]?.image[3] "></li>
+            <li data-target="#slider1" data-slide-to="4" *ngIf="appareil[0]?.image[4] "></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class=" carousel-item active" *ngIf="appareil[0]?.image[0] ">
+              <img *ngIf="appareil[0]?.image[0] " class="img" [src]="src1" />
+            </div>
+            <div class="carousel-item" *ngIf="appareil[0]?.image[1] ">
+              <img *ngIf="appareil[0]?.image[1] " class="img" [src]="src2" />
+            </div>
+            <div class="carousel-item" *ngIf="appareil[0]?.image[2] ">
+              <img *ngIf="appareil[0]?.image[2] " class="img" [src]="src3" />
+            </div>
+            <div class="carousel-item" *ngIf="appareil[0]?.image[3] ">
+              <img *ngIf="appareil[0]?.image[3] " class="img" [src]="src4" />
+            </div>
+            <div class="carousel-item" *ngIf="appareil[0]?.image[4] ">
+              <img *ngIf="appareil[0]?.image[4] " class="img" [src]="src5" />
+            </div>
+          </div>
+          <a href="#slider1" class="carousel-control-prev" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+
+          <a href="#slider1" class="carousel-control-next" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+        <div>
+          <div style="text-align: center;" [hidden]="hiddenAucune">
+            Aucune photo</div>
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <ul class="list-group">
+          <li class="list-group-item" [hidden]="hiddenNom"><strong>Nom :</strong> {{appareil[0]?.nom}}
+          </li>
+          <li class="list-group-item" [hidden]="hiddenCode"><strong>code :</strong>
+            {{appareil[0]?.code}}</li>
+          <li class="list-group-item" [hidden]="hiddenMatricule"><strong>matricule :</strong> <span *ngIf="
+                    appareil[0]?.matricule">
+              {{appareil[0]?.matricule}}</span> <span *ngIf="!appareil[0]?.matricule"></span></li>
+          <li class="list-group-item" [hidden]="hiddenMarque"><strong>marque :</strong> <span
+              *ngIf="appareil[0]?.marque">
+              {{appareil[0]?.marque}}</span> <span *ngIf="!appareil[0]?.marque"></span></li>
+          <li class="list-group-item" [hidden]="hiddenReference"><strong>reference :</strong><span
+              *ngIf="appareil[0]?.reference">
+              {{appareil[0]?.reference}} </span><span *ngIf=" !appareil[0]?.reference"></span></li>
+          <li class="list-group-item" [hidden]="hiddenSerie"><strong>Numero de serie
+              :</strong><span *ngIf="appareil[0]?.numero_serie ||appareil[0]?.numero_serie ===0">
+              {{appareil[0]?.numero_serie}}</span></li>
+          <li class="list-group-item" [hidden]="hiddenFournisseur"><strong>Fournisseur :</strong><span
+              *ngIf="appareil[0]?.fournisseur">
+              {{appareil[0]?.fournisseur}}</span><span *ngIf=" !appareil[0]?.fournisseur"></span></li>
+          <li class="list-group-item" [hidden]="hiddenCategorie"><strong>Categorie :</strong>
+            {{appareil[0]?.categorie_nom}}</li>
+          <li class="list-group-item" [hidden]="hiddenStock"><strong>Stock :</strong>
+            {{appareil[0]?.stock_nom}}</li>
+          <li class="list-group-item" [hidden]="hiddenEtat"><strong>Etat :</strong>
+            {{appareil[0]?.etat}}</li>
+          <li class="list-group-item" [hidden]="hiddenStatut"><strong>Statut :</strong>
+            {{appareil[0]?.status}}</li>
+          <li class="list-group-item" [hidden]="hiddenFiche"><strong>Fiche technique : </strong><a [href]="src6"
+              *ngIf="appareil[0]?.fiche">telecharger</a><span *ngIf="appareil[0]?.fiche"></span>
+          </li>
+          <li class="list-group-item" [hidden]="hiddenCertificat"><strong>Certificat : </strong><a [href]="src7"
+              *ngIf="appareil[0]?.certificat">telecharger</a><span *ngIf="appareil[0]?.certificat"></span></li>
+          <li class="list-group-item" [hidden]="hiddenRemarques"><strong>remarques : </strong> <span
+              *ngIf="appareil[0]?.remarques">
+              {{appareil[0]?.remarques}}</span> <span *ngIf="appareil[0]?.remarques"></span></li>
+          <li class="list-group-item" [hidden]="hiddenEtalonnage"><strong>Etalonnage : </strong> <span
+              *ngIf="appareil[0]?.dernier_etalonnage">
+              {{appareil[0]?.dernier_etalonnage  | date:'dd/MM/yyyy'}} </span> </li>
+          <li class="list-group-item" [hidden]="hiddenFrequence"><strong>Frequence : </strong> <span
+              *ngIf="appareil[0]?.frequence ||appareil[0]?.frequence ===0">
+              {{appareil[0]?.frequence}} </span> </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card card-body mt-3" [hidden]="hidden">
+    <div class="card-header">
+      <h3 style="text-align: center;">Accessoires assocciés </h3>
+    </div>
+
+    <div>
+      <ag-grid-angular style=" height: 500px;" class="ag-theme-alpine mt-3" #agGrid rowSelection="multiple"
+        [columnDefs]="columnDefs" [pagination]="true" [animateRows]="true" [paginationPageSize]="30"
+        [frameworkComponents]="frameworkComponents" (gridReady)=(onGridReady($event)) [isRowSelectable]="false"
+        [suppressHorizontalScroll]="true" [suppressCellSelection]="true">
+
+
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>

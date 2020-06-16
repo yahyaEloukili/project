@@ -1,0 +1,28 @@
+span{
+  font-weight: bold;
+  color: red;
+}
+.span{
+  font-weight: normal;
+  color: white;
+}
+input {
+  text-align: center;
+}
+
+select{
+  text-align-last: center;
+}
+option{
+  text-align: center;
+}
+.card-header{
+  text-align: center;
+}
+
+.row{
+  text-align: center;
+}
+label{
+  font-weight: 500;
+}

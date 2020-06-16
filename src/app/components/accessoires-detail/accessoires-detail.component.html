@@ -1,0 +1,79 @@
+<div class="">
+  <div class="col-md-3 mb-2">
+    <a [routerLink]="['/accessoires']" class="btn btn-secondary btn-block">
+      <i class="fas fa-arrow-left"></i> Liste d'accesoires
+    </a>
+  </div>
+  <div class="card card-body">
+    <div class="card-header" style="text-align: center;">
+      <strong> Details d'accessoires</strong>
+    </div>
+
+    <div class="row mt-5 ">
+      <div class="col-sm-6">
+        <div id="slider1" class="carousel slide mb-5 ml-5" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li class="active" data-target="#slider1" data-slide-to="0" *ngIf="sous_equipement[0]?.image[0]">
+            </li>
+            <li data-target="#slider1" data-slide-to="1" *ngIf="sous_equipement[0]?.image[1]"></li>
+            <li data-target="#slider1" data-slide-to="2" *ngIf="sous_equipement[0]?.image[2]"></li>
+            <li data-target="#slider1" data-slide-to="3" *ngIf="sous_equipement[0]?.image[3]"></li>
+            <li data-target="#slider1" data-slide-to="4" *ngIf="sous_equipement[0]?.image[4]"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active" *ngIf="sous_equipement[0]?.image[0]">
+              <img *ngIf="sous_equipement[0]?.image[0]" class="img" [src]="src1" alt="" />
+            </div>
+            <div class="carousel-item" *ngIf="sous_equipement[0]?.image[1]">
+              <img *ngIf="sous_equipement[0]?.image[1]" class="img" [src]="src2" alt="" />
+            </div>
+            <div class="carousel-item" *ngIf="sous_equipement[0]?.image[2]">
+              <img *ngIf="sous_equipement[0]?.image[2]" class="img" [src]="src3" alt="" />
+            </div>
+            <div class="carousel-item" *ngIf="sous_equipement[0]?.image[3]">
+              <img *ngIf="sous_equipement[0]?.image[3]" class="img" [src]="src4" alt="" />
+            </div>
+            <div class="carousel-item" *ngIf="sous_equipement[0]?.image[4]">
+              <img *ngIf="sous_equipement[0]?.image[4]" class="img" [src]="src5" alt="" />
+            </div>
+          </div>
+          <a href="#slider1" class="carousel-control-prev" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+
+          <a href="#slider1" class="carousel-control-next" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <div class="div" style="text-align: center;"
+          *ngIf="!sous_equipement[0]?.image[0]  && !sous_equipement[0]?.image[1] && !sous_equipement[0]?.image[2]  && !sous_equipement[0]?.image[3]  && !sous_equipement[0]?.image[4] ">
+          Aucune photo</div>
+      </div>
+      <div class="col-sm-6">
+        <ul class="list-group">
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.nom"><strong>Nom :</strong>
+            {{sous_equipement[0]?.nom}}</li>
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.code"><strong>code :</strong>
+            {{sous_equipement[0]?.code}}</li>
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.marque"><strong>marque :</strong> <span
+              *ngIf="sous_equipement[0]?.marque">
+              {{sous_equipement[0]?.marque}}</span> <span *ngIf="!sous_equipement[0]?.marque"></span></li>
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.reference"><strong>reference :</strong><span
+              *ngIf="sous_equipement[0]?.reference">
+              {{sous_equipement[0]?.reference}} </span><span *ngIf="!sous_equipement[0]?.reference"></span></li>
+
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.etat"><strong>Etat :</strong>
+            {{sous_equipement[0]?.etat}}</li>
+          <li class=" list-group-item" *ngIf="sous_equipement[0]?.status"><strong>Statut :</strong>
+            {{sous_equipement[0]?.status}}</li>
+          <li class="list-group-item" *ngIf="sous_equipement[0]?.appareil_nom"><strong>Appareil parrent
+              :</strong> {{sous_equipement[0]?.appareil_nom}} - {{sous_equipement[0]?.code}}
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>

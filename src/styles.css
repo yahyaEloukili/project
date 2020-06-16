@@ -1,0 +1,43 @@
+
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine";
+.select2-selection__rendered {
+  line-height: 31px !important;
+
+}
+
+.sidebar{
+  background-color: #163441 !important;
+}
+.select2-container .select2-selection--single {
+  height: 38px !important;
+  display: block !important;
+
+
+width: 100%!important;
+}
+.sidebar{
+  background-color: #163441 !important;
+}
+
+.select2-selection__arrow {
+  height: 35px !important;
+  color: black !important;
+  font-weight: bold !important;
+
+
+
+}
+  @media (min-width:1000px){
+    .select2-container .select2-selection--single {
+
+
+    }}
+@media (max-width:800px){
+  .select2-container .select2-selection--single {
+
+width: 450px!important;
+  }
+
+
+  }

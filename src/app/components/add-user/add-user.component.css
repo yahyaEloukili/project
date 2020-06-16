@@ -1,0 +1,28 @@
+.footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+span{
+  font-weight: bold;
+  color: red;
+}
+
+input {
+  text-align: center;
+}
+
+select{
+  text-align-last: center;
+}
+option{
+  text-align: center;
+}
+.card-header{
+  text-align: center;
+}
+
+.row{
+  text-align: center;
+}

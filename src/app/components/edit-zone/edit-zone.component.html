@@ -1,0 +1,40 @@
+<section id="details">
+  <div class="container">
+    <div class="col-md-3">
+      <a [routerLink]="['/zones']" class="btn btn-secondary btn-block">
+        <i class="fas fa-arrow-left"></i> Liste de zones
+      </a>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <div class="card">
+          <div class="card-header " style="text-align:center;">
+            <h4>Modifier une zone</h4>
+          </div>
+          <div class="card-body">
+            <flash-messages></flash-messages>
+            <form #zonetForm="ngForm" (ngSubmit)="onEditZone(zonetForm)" enctype="multipart/form-data">
+              <div class="form-group" style="text-align:center;">
+                <label for="nom">Nom <span style="color: red;">*</span> </label>
+                <input type="text" class="form-control" name="nom" [ngModel]="zone?.nom" (ngModel)="(zone?.nom)"
+                  #nom="ngModel" [ngClass]="{
+                            'is-invalid': (nom.errors && nom.touched) || (errorNom && !valueNom  )
+                          }" required (keyup)='clickNom($event)' />
+                <div class="invalid-feedback" [hidden]="!nom.errors?.required && !errorNom">
+                  le champs nom est obligatoire
+                </div>
+              </div>
+              <div class="row" style="display: center; align-items: center; justify-content: center;">
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-block btn-success">
+                    <i class="fas fa-plus"></i> Modifier
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,116 @@
+<div>
+  <h2 class="" style="text-align: center;">Liste des appareils</h2>
+  <div class=" row">
+    <div style=" margin-left: 1%">
+      <div class="form-group">
+        <label>Filtrer par :
+          <span>*</span></label>
+        <select name="appareil" class="form-control" [ngModel]="" (ngModelChange)="setValue($event)" #appareil="ngModel"
+          style="width: 200px;" style="width: 150px;">
+          <option value="tout" selected=true>Tout</option>
+          <option value="categorie">Categorie</option>
+          <option value="stock">Stock</option>
+          <option value="etat">Etat</option>
+          <option value="statut">Statut</option>
+
+        </select>
+
+      </div>
+    </div>&nbsp;&nbsp;
+    <div class="">
+      <div class="form-group">
+        <div *ngIf="value==='stock'">
+          <label>Stock :
+            <span>*</span></label>
+
+          <select name="stock" class="form-control" [ngModel]="" style="width: 200px;"
+            (ngModelChange)="setStock($event)" #stock="ngModel">
+            <option *ngFor="let stock of stocks" [ngValue]="stock.id">{{ stock.nom }}</option>
+          </select>
+        </div>
+        <div *ngIf="value==='statut'">
+          <label>Statut :
+            <span>*</span></label>
+
+          <select name="statut" class="form-control" [ngModel]="" (ngModelChange)="setStatut($event)" #statut="ngModel"
+            style="width: 200px;">
+            <option value="Disponible">Disponible</option>
+            <option value="Utilisation">En utilisation</option>
+            <option value="Stock">En stock</option>
+            <option value="Etalonnage">En etalonnage</option>
+          </select>
+        </div>
+        <div *ngIf="value==='etat'">
+          <label>Etat :
+            <span>*</span></label>
+
+          <select name="etat" class="form-control" [ngModel]="" (ngModelChange)="setEtat($event)" #etat="ngModel"
+            style="width: 200px;">
+            <option value="Bon etat">Bon etat</option>
+            <option value="Mauvais etat">Mauvais etat</option>
+            <option value="Défaillant">Défaillant</option>
+            <option value="En panne">En panne</option>
+          </select>
+        </div>
+        <div *ngIf="value==='categorie'" style="width: 280px;">
+
+          <label>Categories :
+            <span>*</span></label>
+
+          <select name="categorie" class="form-control" [ngModel]="" (ngModelChange)="setcategorie($event)"
+            #categorie="ngModel">
+            <option *ngFor="let categorie of categories" [ngValue]="categorie.id">{{ categorie.name }}</option>
+          </select>
+        </div>
+
+        <!-- <div class="col-sm" *ngIf="value==='categorie'">
+          <label>Categorie :
+            <span>*</span></label><br>
+
+          <ng-select2 class="custom" name="categories" [value]="" [data]="categories" [width]="300"
+            (valueChanged)="setcategorie($event)">
+          </ng-select2>
+        </div> -->
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div>
+    <div class="mb-1">
+      <button (click)="downloadAsPDF()" class="btn btn-sm btn-success mt-2"
+        style="background-color: #163441;color: #fdb82f; border-color: #163441;">Pdf</button>&nbsp;&nbsp;
+      <button (click)="exportAsXLSX()" class="btn btn-sm btn-success mt-2"
+        style="background-color: #163441;color: #fdb82f; border-color: #163441;">Excel</button>&nbsp;&nbsp;
+      <button (click)="onBtnExport()" class="btn btn-sm btn-success mt-2"
+        style="background-color: #163441;color: #fdb82f; border-color: #163441;">Csv</button>
+
+      <div id="pdfTable" #pdfTable>
+      </div>
+    </div>
+    <ag-grid-angular style="height: 80vh;" class="ag-theme-alpine ag-font-style" #agGrid [gridOptions]="gridOptions"
+      rowSelection="multiple" [defaultExportParams]="" [columnDefs]="columnDefs" [pagination]="true"
+      [animateRows]="true" [paginationPageSize]="paginationPageSize" [suppressCsvExport]="false"
+      [suppressCellSelection]="true" [suppressHorizontalScroll]="" [alwaysShowVerticalScroll]="true"
+      [frameworkComponents]="frameworkComponents" (gridReady)=(onGridReady($event))>
+
+
+    </ag-grid-angular>
+  </div>
+  <!-- style="display: center; align-items: center; justify-content: center;" -->
+  <div class="row" style="display: center; align-items: center; justify-content: center;">
+    <div class="col-md-4">
+
+      <button (click)="deleteData()" class=" btn btn-block  btn-danger mt-3">Supprimer</button>
+
+    </div>
+    <div class="col-md-4">
+
+      <button (click)="onAddButtonClick()" class=" btn btn-block   btn-success mt-3">Ajouter</button>
+
+    </div>
+  </div>
+
+</div>

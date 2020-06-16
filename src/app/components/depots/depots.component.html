@@ -1,0 +1,79 @@
+<div style=" margin: auto;">
+  <h2 style="text-align: center;">Liste de depots</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Filtrer par :
+          <span>*</span></label>
+        <select name="appareil" class="form-control" [ngModel]="" (ngModelChange)="setValue($event)" #appareil="ngModel"
+          style="width: 250px;">
+          <option value="tout" selected=true>Tout</option>
+          <option value="user">Utilisateur</option>
+          <option value="appareil">Appareil</option>
+          <option value="date">date</option>
+
+
+
+        </select>
+
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div *ngIf="value==='user'">
+          <label>Utilisateur :
+            <span>*</span></label>
+
+          <select name="user" style="width: 300px;" class="form-control" [ngModel]="" (ngModelChange)="setUser($event)"
+            #user="ngModel">
+            <option *ngFor="let user of users" [ngValue]="user.id">{{ user.nom }}</option>
+          </select>
+        </div>
+
+        <div *ngIf="value==='appareil'">
+          <label>Appareils :
+            <span>*</span></label><br>
+
+
+          <ng-select2 class="custom" name="appareil" [value]="" [data]="appareils" [width]="300"
+            (valueChanged)="setAppareil($event)">
+          </ng-select2>
+        </div>
+
+        <div *ngIf="value==='type'">
+          <label>Type de mouvement :
+            <span>*</span></label>
+
+          <select name="mouvement" class="form-control" [ngModel]="" (ngModelChange)="setMouvement($event)"
+            style="width: 300px;" #appareil="ngModel">
+            <option value="RECUPERATION">RECUPERATION</option>
+            <option value="DEPOT">DEPOT</option>
+          </select>
+        </div>
+        <div *ngIf="value==='date'">
+
+          <label>Date entre :
+            <span>*</span></label><br>
+          <input type="text" name="date1" bsDatepicker style="width: 300px;"
+            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control" [(ngModel)]="date1">
+          et
+          <input type="text" name="date2" bsDatepicker style="width: 300px;"
+            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control" [(ngModel)]="date2">
+          <button class="btn btn-sm btn-primary mt-1" (click)="onChangeDate(date1,date2)">Checher</button>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <ag-grid-angular style=" height: 80vh; " class="ag-theme-alpine" #agGrid [suppressHorizontalScroll]="true"
+    rowSelection="multiple" [columnDefs]="columnDefs" [pagination]="true" [animateRows]="true" [paginationPageSize]="30"
+    (gridReady)=(onGridReady($event)) [isRowSelectable]="false" [suppressCellSelection]="true"
+    [frameworkComponents]="frameworkComponents">
+
+
+  </ag-grid-angular>
+</div>

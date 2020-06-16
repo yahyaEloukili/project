@@ -1,0 +1,151 @@
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Durées moyennes d'utilisation des
+          appareils de chaque catégorie (en Heures)
+        </h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData3 " [labels]="barChartLabels3" [options]="options" height="100"
+            [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+<!-- rOW2 -->
+
+<div class="row">
+  <div class="col-md-6 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Nombre d'appareils par statut</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData2 " [labels]="barChartLabels2" [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Nombre d'appareils par etat</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData1 " [labels]="barChartLabels1" [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+<!-- row3 -->
+
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="casrd-title mb-0">Nombre d'appareils par categorie</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData " [labels]="barChartLabels" [options]="barChartOptions"
+            height="100" [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- row 4 -->
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Appareils en bonne etat / en mauvais etat pour chaque categorie</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData4 " [labels]="barChartLabels4" [options]="barChartOptions"
+            height="100" [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+<!-- row 5 -->
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Nombre d'appareils par stock</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData6 " [labels]="barChartLabels6" [options]="barChartOptions"
+            height="100" [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+<!-- row 6 -->
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="card">
+      <div class="p-4 border-bottom bg-light">
+        <h4 class="card-title mb-0">Nomre d'utilisateurs par zone</h4>
+      </div>
+      <div class="card-body">
+        <div style="display: block;" class="card-body">
+          <canvas baseChart [datasets]="barChartData5 " [labels]="barChartLabels5" [options]="barChartOptions"
+            height="100" [legend]="barChartLegend" [chartType]="barChartType" [options]="options"></canvas>
+        </div>
+        <div class="mr-5" id="mixed-chart-legend"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+<!-- main-panel ends -->

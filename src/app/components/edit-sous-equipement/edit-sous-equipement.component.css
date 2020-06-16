@@ -1,0 +1,47 @@
+span{
+  font-weight: bold;
+  color: red;
+}
+.span{
+  font-weight: normal;
+  color: white;
+}
+
+input {
+  text-align: center;
+}
+
+select{
+  text-align-last: center;
+}
+option{
+  text-align: center;
+}
+.card-header{
+  text-align: center;
+}
+
+.row{
+  text-align: center;
+}
+@media (max-width:800px){
+  .list{
+
+    margin-left: 4.8% ;
+    width: 90.25%;
+
+  }
+
+  }
+
+  @media (min-width:800px){
+    .list{
+
+
+      width: 30.3%;
+
+    }
+
+    }
+
+
